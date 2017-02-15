@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use App\Repositories\BlogRepository;
 use Illuminate\Http\Request;
 
+// include composer autoload
+require 'vendor/autoload.php';
+
+// import the Intervention Image Manager Class
+use Intervention\Image\ImageManagerStatic as Image;
+
 class BlogController extends Controller
 {
 	protected $blogRepository;
@@ -32,7 +38,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('blog_create');
     }
 
     /**
@@ -43,7 +49,17 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$image = $request->file('image');
+		$destinationPath = public_path('images');
+        $extension = $image->getClientOriginalExtension(); // getting image extension
+        $fileName = rand(11111,99999).'.'.$extension; // renameing image
+        $image->move($destinationPath,$image->getClientOriginalName()); // uploading file to given path
+		$path = public_path('images/'. $image->getClientOriginalName());
+		
+		Image::make($destinationPath.'/'.$image->getClientOriginalName())->resize(650,350)->save($path);
+	  
+        $blog=$this->blogRepository->store($request->all());
+		return redirect('blog')->withOk("Le nouveau blog ".$blog->titre." a été crée.");
     }
 
     /**

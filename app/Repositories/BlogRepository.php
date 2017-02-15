@@ -17,6 +17,8 @@ class BlogRepository
 		$blog->picture=$inputs['picture'];
 		$blog->ville=$inputs['ville'];
 		$blog->pays=$inputs['pays'];
+		$blog->longitude=$inputs['longitude'];
+		$blog->latitude=$inputs['latitude'];
 		$blog->blog_text=$inputs['blog_text'];
 		$blog->save();
 	}

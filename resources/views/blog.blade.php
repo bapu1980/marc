@@ -28,7 +28,7 @@
 					<td>{!! link_to_route('blog.edit','Modifier', [$blog->id], ['class'=>'btn btn-warning btn-block']) !!}</td>
 					<td>{!! Form::open(['method'=>'DELETE', 'route'=>['blog.destroy', $blog->id]]) !!}
 						{!! Form::submit('Supprimer',['class'=>'btn btn-danger btn-block','onclick'=>'return confirm(\'Vraiment supprimer cet page ?\')']) !!}
-						{!! Form::close !!}
+						{!! Form::close() !!}
 					</td>
 			@endforeach
 		</tbody>
