@@ -18,8 +18,8 @@ class CreateBlogsTable extends Migration
 			$table->string('picture');
 			$table->string('ville');
 			$table->string('pays');
-			$table->decimal('longitude');
-			$table->decimal('latitude');
+			$table->decimal('longitude',10,7);
+			$table->decimal('latitude',10,7);
             $table->longText('blog_text');
             $table->rememberToken();
             $table->timestamps();

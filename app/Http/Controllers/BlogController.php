@@ -57,8 +57,8 @@ class BlogController extends Controller
 		$path = public_path('images/'. $image->getClientOriginalName());
 		
 		Image::make($destinationPath.'/'.$image->getClientOriginalName())->resize(650,350)->save($path);
-	  
-        $blog=$this->blogRepository->store($request->all());
+			    
+        $blog=$this->blogRepository->store($request->all(),$image->getClientOriginalName());
 		return redirect('blog')->withOk("Le nouveau blog ".$blog->titre." a été crée.");
     }
 
@@ -81,7 +81,8 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $blog=$this->blogRepository->getById($id);
+		return view('blog_edit',compact('blog'));
     }
 
     /**
@@ -93,7 +94,24 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+		if ($request->hasFile('image')) {
+			$image = $request->file('image');
+			$destinationPath = public_path('images');
+			$image->move($destinationPath,$image->getClientOriginalName()); // uploading file to given path
+			$path = public_path('images/'. $image->getClientOriginalName());
+			
+			Image::make($destinationPath.'/'.$image->getClientOriginalName())->resize(650,350)->save($path);
+			
+			$image_update_name = $image->getClientOriginalName();
+		}else{
+			$blog=$this->blogRepository->getById($id);
+			$image_update_name = $blog->picture;
+		}
+		
+		
+        $this->blogRepository->update($id,$request->all(),$image_update_name);
+		$blog=$this->blogRepository->getById($id);
+		return redirect('blog')->withOk("Le nouveau blog ".$blog->titre." a été modifié.");
     }
 
     /**
@@ -104,6 +122,7 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->blogRepository->destroy($id);
+		return redirect()->back();
     }
 }

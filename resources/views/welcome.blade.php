@@ -116,100 +116,110 @@
 	
 
     <section class="no-padding" id="portfolio">
-        <div class="container-fluid">
+	<div class="container-fluid">
+		<?php if (isset($blogs[0]->picture)){  ?>
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="resources/views/img/portfolio/fullsize/polar-bear-photography-alaska.jpg" class="portfolio-box">
-                        <img src="storage/public/image/homepage/polar-bear-photography-alaska.jpg" class="img-responsive" width="650px" height="350px" alt="">
+                    <a href="" class="portfolio-box">
+                        <img src="<?php print 'public/images/'.$blogs[0]->picture; ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Alaska
+                                    <?php print $blogs[0]->ville; ?>
                                 </div>
                                 <div class="project-name">
-                                    Randonée avec les ours polaires
+                                    <?php print $blogs[0]->titre; ?>
                                 </div>
                             </div>
                         </div>
                     </a>
-                </div>
+			</div>
+		<?php }  ?>		
+		<?php if (isset($blogs[1]->picture)){  ?>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="resources/views/img/portfolio/fullsize/2.jpg" class="portfolio-box">
-                        <img src="storage/public/image/homepage/vancouver.jpg" class="img-responsive" alt="">
+                    <a href="" class="portfolio-box">
+                        <img src="<?php print 'public/images/'.$blogs[1]->picture; ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Vancouver
+                                    <?php print $blogs[1]->ville; ?>
                                 </div>
                                 <div class="project-name">
-                                    Ville olympique
+                                    <?php print $blogs[1]->titre; ?>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+	    <?php }  ?>
+       <?php if (isset($blogs[2]->picture)){  ?>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="resources/views/img/portfolio/fullsize/3.jpg" class="portfolio-box">
-                        <img src="storage/public/image/homepage/Yellowstone-National-Park.jpg" class="img-responsive" alt="">
+                    <a href="" class="portfolio-box">
+                        <img src="<?php print 'public/images/'.$blogs[2]->picture; ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Yellowstone National Park
+                                    <?php print $blogs[2]->ville; ?>
                                 </div>
                                 <div class="project-name">
-                                    Quand les geysers font des siennes
+                                    <?php print $blogs[2]->titre; ?>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+	    <?php }  ?>
+        <?php if (isset($blogs[3]->picture)){  ?>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="resources/views/img/portfolio/fullsize/4.jpg" class="portfolio-box">
-                        <img src="storage/public/image/homepage/san_francisco.jpg" class="img-responsive" alt="">
+                    <a href="" class="portfolio-box">
+                        <img src="<?php print 'public/images/'.$blogs[3]->picture; ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    San francisco
+                                    <?php print $blogs[3]->ville; ?>
                                 </div>
                                 <div class="project-name">
-                                    Ses ruelles en pente
+                                    <?php print $blogs[3]->titre; ?>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+	    <?php }  ?>
+        <?php if (isset($blogs[4]->picture)){  ?>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="resources/views/img/portfolio/fullsize/5.jpg" class="portfolio-box">
-                        <img src="storage/public/image/homepage/teotihuacan.jpg" class="img-responsive" alt="">
+                    <a href="" class="portfolio-box">
+                        <img src="<?php print 'public/images/'.$blogs[4]->picture; ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Teotihuacan
+                                    <?php print $blogs[4]->ville; ?>
                                 </div>
                                 <div class="project-name">
-                                    Des pyramides hallucinantes
+                                    <?php print $blogs[4]->titre; ?>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
+	    <?php }  ?>
+        <?php if (isset($blogs[5]->picture)){  ?>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="resources/views/img/portfolio/fullsize/6.jpg" class="portfolio-box">
-                        <img src="storage/public/image/homepage/tikal_02_big.jpg" class="img-responsive" alt="">
+                    <a href="" class="portfolio-box">
+                        <img src="<?php print 'public/images/'.$blogs[5]->picture; ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Tikal
+                                    <?php print $blogs[5]->ville; ?>
                                 </div>
                                 <div class="project-name">
-                                    Quand les mayas rencontrent la jungle
+                                    <?php print $blogs[5]->titre; ?>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-            </div>
-        </div>
+	    <?php }  ?>
     </section>
 
     <aside class="bg-dark">
@@ -258,7 +268,7 @@
 			var map = new google.maps.Map(document.getElementById("map"),mapOptions);	
 			  directionsDisplay.setMap(map);
 			  
-			  var image_icon = "http://localhost/marc/public/images_site/icon_moto.png";
+			  var image_icon = "http://moto.freesbee.ch/public/images_site/icon_moto.png";
 			  function createMarker(lat, lng,image_icon) {
 					var newmarker = new google.maps.Marker({
 						position: new google.maps.LatLng(lat, lng),

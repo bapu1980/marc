@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//	return view('welcome');
+//});
+
+Route::get('/','WelcomeController@index');
 
 Route::get('media', [ 'as' => 'image.create', 'uses' => 'ImageController@create']);
 Route::post('media', [ 'as' => 'image.store', 'uses' => 'ImageController@save']);

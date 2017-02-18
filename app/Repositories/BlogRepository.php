@@ -12,9 +12,9 @@ class BlogRepository
 		$this->blog=$blog;
 	}
 	
-	private function save(Blog $blog, Array $inputs){
+	private function save(Blog $blog, Array $inputs, $img){
 		$blog->titre=$inputs['titre'];
-		$blog->picture=$inputs['picture'];
+		$blog->picture=$img;
 		$blog->ville=$inputs['ville'];
 		$blog->pays=$inputs['pays'];
 		$blog->longitude=$inputs['longitude'];
@@ -27,9 +27,9 @@ class BlogRepository
 		return $this->blog->paginate($n);
 	}
 	
-	public function store(Array $inputs){
+	public function store(Array $inputs, $img){
 		$blog= new $this->blog;
-		$this->save($blog, $inputs);
+		$this->save($blog, $inputs, $img);
 		return $blog;
 	}
 	
@@ -37,8 +37,8 @@ class BlogRepository
 		return $this->blog->findOrFail($id);
 	}
 	
-	public function update($id, Array $inputs){
-		$this->save($this->getById($id),$inputs);
+	public function update($id, Array $inputs, $img){
+		$this->save($this->getById($id),$inputs, $img);
 	}
 	
 	public function destroy($id){
