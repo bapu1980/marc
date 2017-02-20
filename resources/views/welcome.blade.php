@@ -245,10 +245,24 @@
 	{!! Html::script('resources/views/vendor/magnific-popup/jquery.magnific-popup.min.js') !!}
 
 	<script src="http://maps.google.com/maps/api/js?key=AIzaSyBn0tKp1JRuOUt9iixRi7wj7jnLU-s3J88&sensor=false&amp;language=en"></script>
+	<?php 
+		$array_google_map = array();
+		$indice = 0;
+		foreach ($blogs as $blog){
+			$array_google_map[$indice]['lat'] = $blog->latitude;
+			$array_google_map[$indice]['lng'] = $blog->longitude;
+			$indice++;
+		}
+		
+		$array_google_map = array_reverse($array_google_map);
+		
+	?>
 	<script>
 		$(document).ready(function ($) {
 			
 			function initMap() {
+			  var array_google_map= <?php echo json_encode($array_google_map ); ?>;
+
 			  var directionsDisplay = new google.maps.DirectionsRenderer({
                     map: map,
                     suppressMarkers: true
@@ -283,47 +297,35 @@
 					//marker.push(newmarker);
 				}
 			  
-			  originTown["lat"] = 61.2180556;// Anchorage.
-			  originTown["lng"] = -149.90027780000003;// Anchorage.
+			  originTown["lat"] = parseFloat(array_google_map[0]["lat"]);
+			  originTown["lng"] = parseFloat(array_google_map[0]["lng"]);
 			  
 			  createMarker(originTown["lat"],originTown["lng"],image_icon);
 			  
-			  destinationTown["lat"] = 49.2827291;// Vancouver.
-			  destinationTown["lng"] = -123.12073750000002;// Vancouver.
+			  destinationTown["lat"] = parseFloat(array_google_map[1]["lat"]);
+			  destinationTown["lng"] = parseFloat(array_google_map[1]["lng"]);
 			  calculateAndDisplayRoute(directionsService, directionsDisplay,originTown,destinationTown);
 			  
-			  var directionsDisplay2 = new google.maps.DirectionsRenderer({
+			  var typeDisplay = 'directionsDisplay';
+			  var typeService = 'directionsService';
+
+			  for (i = 2; i < array_google_map.length; i++) { 
+				this[typeDisplay+i] = new google.maps.DirectionsRenderer({
                     map: map,
                     suppressMarkers: true
                 });
-			  var directionsService2 = new google.maps.DirectionsService();
-			  directionsDisplay2.setMap(map);
-			  originTown["lat"] = 49.2827291;// Vancouver.
-			  originTown["lng"] = -123.12073750000002;// Vancouver.
-			  destinationTown["lat"] = 37.75421264957418;// San Francisco.
-			  destinationTown["lng"] = -122.432464607991286;// San Francisco.
-			  var selectedMode = "DRIVING";
-			  var originTownLat = originTown["lat"];
-			  var originTownLng = originTown["lng"];
-			  var destinationTownLat = destinationTown["lat"];
-			  var destinationTownLng = destinationTown["lng"];
-			  directionsService2.route({
-				origin: {lat:originTownLat,lng:originTownLng},  
-				destination: {lat:destinationTownLat,lng:destinationTownLng},  
-				// Note that Javascript allows us to access the constant
-				// using square brackets and a string value as its
-				// "property."
-				travelMode: google.maps.TravelMode[selectedMode]
-			  }, function(response, status) {
-				if (status == google.maps.DirectionsStatus.OK) {
-				  directionsDisplay2.setDirections(response);
-				} else {
-				  window.alert('Directions request failed due to ' + status);
-				}
-			  });
-			 		
+				this[typeService+i] = new google.maps.DirectionsService();
+				this[typeDisplay+i].setMap(map);
+				originTown["lat"] = parseFloat(array_google_map[i-1]["lat"]);
+				originTown["lng"] = parseFloat(array_google_map[i-1]["lng"]);
+				destinationTown["lat"] = parseFloat(array_google_map[i]["lat"]);
+				destinationTown["lng"] = parseFloat(array_google_map[i]["lng"]);
+				
+				calculateAndDisplayRoute(this[typeService+i], this[typeDisplay+i],originTown,destinationTown);
+				
 				createMarker(originTown["lat"],originTown["lng"],image_icon);
 				createMarker(destinationTown["lat"],destinationTown["lng"],image_icon);
+			  }
 			  
 			  
 			  
