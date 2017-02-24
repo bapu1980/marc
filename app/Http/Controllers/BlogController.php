@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\BlogRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 // include composer autoload
 require 'vendor/autoload.php';
@@ -50,13 +51,19 @@ class BlogController extends Controller
     public function store(Request $request)
     {
 		$image = $request->file('image');
+		$image_show_all = $request->file('image');
+		$image_show = $request->file('image');
+		        
 		$destinationPath = public_path('images');
-        $extension = $image->getClientOriginalExtension(); // getting image extension
-        $fileName = rand(11111,99999).'.'.$extension; // renameing image
-        $image->move($destinationPath,$image->getClientOriginalName()); // uploading file to given path
+		$image->move($destinationPath,$image->getClientOriginalName()); // uploading file to given path
 		$path = public_path('images/'. $image->getClientOriginalName());
-		
 		Image::make($destinationPath.'/'.$image->getClientOriginalName())->resize(650,350)->save($path);
+		
+		$path = public_path('images_show_all/'. $image_show_all->getClientOriginalName());		
+		Image::make($destinationPath.'/'.$image_show_all->getClientOriginalName())->resize(850,450)->save($path);
+		
+		$path = public_path('images_show/'. $image_show->getClientOriginalName());
+		Image::make($destinationPath.'/'.$image_show->getClientOriginalName())->resize(1200,600)->save($path);
 			    
         $blog=$this->blogRepository->store($request->all(),$image->getClientOriginalName());
 		return redirect('blog')->withOk("Le nouveau blog ".$blog->titre." a été crée.");
@@ -70,7 +77,15 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        $blog=$this->blogRepository->getById($id);
+		return view('blog_show',compact('blog'));
+    }
+	
+	public function show_all()
+    {
+       $blogs = DB::table('blogs')->get();
+		
+	   return view('blog_show_all', ['blogs' => $blogs]);
     }
 
     /**

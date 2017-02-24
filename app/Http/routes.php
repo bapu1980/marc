@@ -22,3 +22,5 @@ Route::post('media', [ 'as' => 'image.store', 'uses' => 'ImageController@save'])
 Route::get('media/show', [ 'as' => 'image.resized', 'uses' => 'ImageController@show']);
 
 Route::resource('blog','BlogController');
+
+Route::get('show_all','BlogController@show_all');
