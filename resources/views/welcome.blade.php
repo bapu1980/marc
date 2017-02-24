@@ -51,10 +51,10 @@
                         <a class="page-scroll" href="">About Me</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="">Journeys</a>
+                        <a class="page-scroll" href="">About my Gear</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="">Blog</a>
+                        <a class="page-scroll" href="<?php print url("/")."/show_all"; ?>">Blog</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="">Contact</a>
@@ -118,9 +118,10 @@
     <section class="no-padding" id="portfolio">
 	<div class="container-fluid">
 		<?php if (isset($blogs[0]->picture)){  ?>
-            <div class="row no-gutter popup-gallery">
+           <!-- <div class="row no-gutter popup-gallery">-->
+				<div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="" class="portfolio-box">
+                    <a href="<?php print url("/")."/blog/".$blogs[0]->id; ?>" class="portfolio-box">
                         <img src="<?php print 'public/images/'.$blogs[0]->picture; ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -137,7 +138,7 @@
 		<?php }  ?>		
 		<?php if (isset($blogs[1]->picture)){  ?>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="" class="portfolio-box">
+                    <a href="<?php print url("/")."/blog/".$blogs[1]->id; ?>" class="portfolio-box">
                         <img src="<?php print 'public/images/'.$blogs[1]->picture; ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -154,7 +155,7 @@
 	    <?php }  ?>
        <?php if (isset($blogs[2]->picture)){  ?>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="" class="portfolio-box">
+                    <a href="<?php print url("/")."/blog/".$blogs[2]->id; ?>" class="portfolio-box">
                         <img src="<?php print 'public/images/'.$blogs[2]->picture; ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -171,7 +172,7 @@
 	    <?php }  ?>
         <?php if (isset($blogs[3]->picture)){  ?>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="" class="portfolio-box">
+                    <a href="<?php print url("/")."/blog/".$blogs[3]->id; ?>" class="portfolio-box">
                         <img src="<?php print 'public/images/'.$blogs[3]->picture; ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -188,7 +189,7 @@
 	    <?php }  ?>
         <?php if (isset($blogs[4]->picture)){  ?>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="" class="portfolio-box">
+                    <a href="<?php print url("/")."/blog/".$blogs[4]->id; ?>" class="portfolio-box">
                         <img src="<?php print 'public/images/'.$blogs[4]->picture; ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -205,7 +206,7 @@
 	    <?php }  ?>
         <?php if (isset($blogs[5]->picture)){  ?>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="" class="portfolio-box">
+                    <a href="<?php print url("/")."/blog/".$blogs[5]->id; ?>" class="portfolio-box">
                         <img src="<?php print 'public/images/'.$blogs[5]->picture; ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">

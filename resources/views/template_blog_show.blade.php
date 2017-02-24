@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE-edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>mon joli site</title>
@@ -15,20 +15,20 @@
 		{!! Html::style('resources/assets/css/creative.css') !!}
 		
 		
-				    <!-- jQuery -->
-	{!! Html::script('resources/views/vendor/jquery/jquery.min.js') !!}
+		<!-- jQuery -->
+		{!! Html::script('resources/views/vendor/jquery/jquery.min.js') !!}
 	
     
-	<!-- Bootstrap Core JavaScript -->
-	{!! Html::script('resources/views/vendor/bootstrap/js/bootstrap.min.js') !!}
+		<!-- Bootstrap Core JavaScript -->
+		{!! Html::script('resources/views/vendor/bootstrap/js/bootstrap.min.js') !!}
 
-    <!-- Plugin JavaScript -->
-	{!! Html::script('resources/assets/js/jquery.easing.min.js') !!}
-	{!! Html::script('resources/views/vendor/scrollreveal/scrollreveal.min.js') !!}
-	{!! Html::script('resources/views/vendor/magnific-popup/jquery.magnific-popup.min.js') !!}
-	
-	<!-- Theme JavaScript -->
-	{!! Html::script('resources/assets/js/creative.min.js') !!}
+		<!-- Plugin JavaScript -->
+		{!! Html::script('resources/assets/js/jquery.easing.min.js') !!}
+		{!! Html::script('resources/views/vendor/scrollreveal/scrollreveal.min.js') !!}
+		{!! Html::script('resources/views/vendor/magnific-popup/jquery.magnific-popup.min.js') !!}
+		
+		<!-- Theme JavaScript -->
+		{!! Html::script('resources/assets/js/creative.min.js') !!}
 		
 		<style>textarea {resize:none;}</style>
     </head>
@@ -50,7 +50,7 @@
                         <a class="page-scroll" href="">About Me</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="">Journeys</a>
+                        <a class="page-scroll" href="">About my Gear</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="<?php print url("/")."/show_all"; ?>">Blog</a>
