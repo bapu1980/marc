@@ -26,3 +26,5 @@ Route::resource('blog','BlogController');
 Route::get('show_all','BlogController@show_all');
 
 Route::resource('gallery','GalleryController');
+
+Route::get('show_all_gallery','GalleryController@show_all_gallery');

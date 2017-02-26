@@ -72,6 +72,13 @@ class GalleryController extends Controller
        
     }
 	
+	public function show_all_gallery()
+    {
+       $gallery = DB::table('galleries')->get();
+		
+	   return view('gallery_show_all', ['gallery' => $gallery]);
+    }
+	
 
     /**
      * Show the form for editing the specified resource.
