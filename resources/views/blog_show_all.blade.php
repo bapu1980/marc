@@ -19,7 +19,7 @@
 				<?php 
 				setlocale (LC_TIME, 'fr_FR','fra');
 				$timestamp = strtotime($blogs->created_at);
-				echo utf8_encode(strftime( "%B %Y", $timestamp) ) ;  
+				echo utf8_encode(strftime( "%d %B %Y", $timestamp) ) ;  
 				?>
 			</div>
 			<div class="ville">
@@ -44,7 +44,7 @@
 				<?php 
 				setlocale (LC_TIME, 'fr_FR','fra');
 				$timestamp = strtotime($blogs->created_at);
-				echo utf8_encode(strftime( "%B %Y", $timestamp) ) ;  
+				echo utf8_encode(strftime( "%d %B %Y", $timestamp) ) ;  
 				?>
 			</div>
 			<div class="ville">
