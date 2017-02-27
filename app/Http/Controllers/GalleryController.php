@@ -69,7 +69,8 @@ class GalleryController extends Controller
      */
     public function show($id)
     {
-       
+        $gallery=$this->galleryRepository->getById($id);
+		return view('gallery_show',compact('gallery'));
     }
 	
 	public function show_all_gallery()
@@ -129,6 +130,7 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-		
+		$this->galleryRepository->destroy($id);
+		return redirect()->back();
     }
 }

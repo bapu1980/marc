@@ -28,5 +28,14 @@
 	<a href="javascript:history.back()" class="btn btn-primary">
 		<span class="glyphicon glyphicon-circle-arrow-left">Retour</span>
 	</a>
+	</div>
+	<?php 
+	print '<b><u>exemple à mettre dans le champ texte</u></b><br/><br/>';
+	print htmlentities('<div class="mask">').'<br/>';
+    print htmlentities('<a href="<?php print url("/")?>/public/gallerie/nom_du_dossier/nom_image+extension">').'<br/>';
+    print htmlentities('<img src="<?php print url("/")?>/public/gallerie/nom_du_dossier/nom_image+extension" class="img-responsive" alt="">').'<br/>'; 
+	print htmlentities('</a>').'<br/>';
+    print htmlentities('</div>'); ?>
+
 </div>
 @endsection

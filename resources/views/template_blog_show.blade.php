@@ -55,6 +55,9 @@
                     <li>
                         <a class="page-scroll" href="<?php print url("/")."/show_all"; ?>">Blog</a>
                     </li>
+					<li>
+                        <a class="page-scroll" href="<?php print url("/")."/show_all_gallery"; ?>">Gallery</a>
+                    </li>
                     <li>
                         <a class="page-scroll" href="">Contact</a>
                     </li>
@@ -69,3 +72,7 @@
 
     </body>
 </html>
+
+
+
+
