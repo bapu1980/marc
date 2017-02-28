@@ -60,7 +60,7 @@
                         <a class="page-scroll" href="<?php print url("/")."/show_all_gallery"; ?>">Gallery</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="">Contact</a>
+                        <a class="page-scroll" href="<?php print url("/")."/contact"; ?>">Contact</a>
                     </li>
                 </ul>
             </div>

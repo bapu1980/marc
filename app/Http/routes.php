@@ -28,3 +28,6 @@ Route::get('show_all','BlogController@show_all');
 Route::resource('gallery','GalleryController');
 
 Route::get('show_all_gallery','GalleryController@show_all_gallery');
+
+Route::get('contact','ContactController@getForm');
+Route::post('contact','ContactController@postForm');

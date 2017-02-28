@@ -1,0 +1,48 @@
+body{
+	background:black;
+}
+
+#mainNav{
+	background:black;
+	z-index:10;
+}
+
+
+.contact{
+	margin-top:100px;
+}
+
+
+.panel{
+	background:black;
+}
+
+.panel-info > .panel-heading {
+    color: white;
+    background-color: #aaa;
+    border-color: #aaa;
+}
+
+.panel-info {
+    border: 2px solid #aaa;
+}
+
+.btn-info {
+    color: white;
+    background-color: #aaa;
+    border-color: #aaa;
+}
+
+.btn-info:hover {
+    color: #aaa;
+    background-color: white;
+    border-color: white;
+}
+
+.confirm{
+	margin-top:100px;
+}
+
+.confirm .panel-body{
+	color: white;
+}

@@ -1,35 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE-edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>mon joli site</title>
-		<!-- Bootstrap Core CSS -->
-		{!! Html::style('resources/views/vendor/bootstrap/css/bootstrap.min.css') !!}
-		<!-- Custom Fonts -->
-		{!! Html::style('resources/views/vendor/font-awesome/css/font-awesome.min.css') !!}
-		<!-- Plugin CSS -->
-		{!! Html::style('resources/views/vendor/magnific-popup/magnific-popup.css') !!}
-		<!-- Theme CSS -->
-		{!! Html::style('resources/assets/css/creative.css') !!}
-		
-		
-		<!-- jQuery -->
-		{!! Html::script('resources/views/vendor/jquery/jquery.min.js') !!}
-	
+		 <!-- Bootstrap Core CSS -->
+	{!! Html::style('resources/views/vendor/bootstrap/css/bootstrap.min.css') !!}
+    <!-- Custom Fonts -->
+    {!! Html::style('resources/views/vendor/font-awesome/css/font-awesome.min.css') !!}
+    <!-- Plugin CSS -->
+	{!! Html::style('resources/views/vendor/magnific-popup/magnific-popup.css') !!}
+    <!-- Theme CSS -->
+	{!! Html::style('resources/assets/css/creative.css') !!}
+	<!-- Theme CSS -->
+	{!! Html::style('resources/assets/css/contact.css') !!}
     
-		<!-- Bootstrap Core JavaScript -->
-		{!! Html::script('resources/views/vendor/bootstrap/js/bootstrap.min.js') !!}
-
-		<!-- Plugin JavaScript -->
-		{!! Html::script('resources/assets/js/jquery.easing.min.js') !!}
-		{!! Html::script('resources/views/vendor/scrollreveal/scrollreveal.min.js') !!}
-		{!! Html::script('resources/views/vendor/magnific-popup/jquery.magnific-popup.min.js') !!}
-		
-		<!-- Theme JavaScript -->
-		{!! Html::script('resources/assets/js/creative.min.js') !!}
-		
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 		<style>textarea {resize:none;}</style>
     </head>
     <body>
@@ -68,11 +60,5 @@
         <!-- /.container-fluid -->
     </nav>
         @yield('contenu')
-		
-
     </body>
 </html>
-
-
-
-
