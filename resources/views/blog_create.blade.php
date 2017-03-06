@@ -24,13 +24,13 @@
 				{!! Form::text('pays', null, ['class'=>'form-control','placeholder'=>'Pays']) !!}
 				{!! $errors->first('pays','<small class="help-block">:message</small>') !!}
 			</div>
-			<div class="form-group {!! $errors->has('longitude') ? 'has-error' : '' !!}">
-				{!! Form::text('longitude', null, ['class'=>'form-control','placeholder'=>'Longitude']) !!}
-				{!! $errors->first('longitude','<small class="help-block">:message</small>') !!}
-			</div>
 			<div class="form-group {!! $errors->has('latitude') ? 'has-error' : '' !!}">
 				{!! Form::text('latitude', null, ['class'=>'form-control','placeholder'=>'Latitude']) !!}
 				{!! $errors->first('latitude','<small class="help-block">:message</small>') !!}
+			</div>
+			<div class="form-group {!! $errors->has('longitude') ? 'has-error' : '' !!}">
+				{!! Form::text('longitude', null, ['class'=>'form-control','placeholder'=>'Longitude']) !!}
+				{!! $errors->first('longitude','<small class="help-block">:message</small>') !!}
 			</div>
 			<div class="form-group {!! $errors->has('blog_text') ? 'has-error' : '' !!}">
 				{!! Form::textarea('blog_text', null, ['class'=>'form-control','placeholder'=>'Text de la page']) !!}

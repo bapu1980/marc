@@ -53,7 +53,6 @@
 			<div class="titre">
 				<?php print $blogs->titre; ?>
 			</div>
-			<div class="espace"></div>
 			<div class="lire_post">lire le post</div>
 		</div>
 		<div class="col-xs-6 fader"><img src="<?php print 'public/images_show_all/'.$blogs->picture; ?>" class="img-responsive" alt=""></div>
@@ -71,11 +70,13 @@
 				$( this ).css('background','white');
 				$( \".blog_".$blogs->id." .titre \" ).css('color','black');
 				$( \".blog_".$blogs->id." .lire_post \" ).css('color','black');
+				$( \".blog_".$blogs->id." .lire_post \" ).css('border','1px solid black');
 			  }, function() {
 				
-				$( this ).css('background','black');
+				$( this ).css('background',\"url('public/image/fond_homepage.png')\");
 				$( \".blog_".$blogs->id." .titre \" ).css('color','white');
 				$( \".blog_".$blogs->id." .lire_post \" ).css('color','white');
+				$( \".blog_".$blogs->id." .lire_post \" ).css('border','1px solid white');
 			  }
 			)";
 	print "});";

@@ -19,6 +19,7 @@
 	{!! Html::style('resources/views/vendor/magnific-popup/magnific-popup.css') !!}
     <!-- Theme CSS -->
 	{!! Html::style('resources/assets/css/creative.css') !!}
+	{!! Html::style('resources/assets/css/menu.css') !!}
     
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -229,7 +230,7 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>Tags or not Tags ????</h2>
+                <p>&copy; 2017 monsite.com<p>
             </div>
         </div>
     </aside>
@@ -278,7 +279,8 @@
 			var mapOptions = {
 				center: center,
 				zoom: 5,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				scrollwheel: false,
 			};
 			
 			var originTown = [];

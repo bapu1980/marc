@@ -30,6 +30,8 @@
 		<!-- Theme JavaScript -->
 		{!! Html::script('resources/assets/js/creative.min.js') !!}
 		
+		{!! Html::style('resources/assets/css/menu.css') !!}
+		
 		<style>textarea {resize:none;}</style>
     </head>
     <body>

@@ -52,22 +52,16 @@ body{
 	padding: 0px 15px;
 }
 
-.espace{
-	width:75px;
-	border-bottom: 10px solid #aaa;
-	margin-left:45%;
-	margin-top:20px;
-	
-}
-
 .lire_post{
 	font-size: 17px;
 	color: white;
 	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-	text-align:center;
-	padding: 0px 15px;
+	margin:auto;
+	padding: 15px;
 	margin-top:20px;
 	text-transform: uppercase;
+	border:1px solid white;
+	width:135px;
 }
 
 .fader {
@@ -107,33 +101,31 @@ body{
 	}
 	
 	.lire_post{
-		font-size: 15px;
+		font-size: 17px;
 	}
 	
-	.espace{
-		display:none;
-	}
 }
 
 @media screen and (max-width: 800px) {
 	.date{
-		margin-top:0px;
+		margin-top:-5px;
 		font-size: 10px;
 	}
 	
 	.ville{
 		font-size: 12px;
+		margin-top:-5px;
 	}
 	
 	.lire_post{
 		font-size: 12px;
+		width: 85px;
+		margin-top: -3px;
+		padding: 5px;
 	}
 	
 	.titre{
 		display:none;
 	}
 	
-	.espace{
-		display:none;
-	}
 }
