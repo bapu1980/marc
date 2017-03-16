@@ -17,17 +17,18 @@
 
 Route::get('/','WelcomeController@index');
 
-Route::get('media', [ 'as' => 'image.create', 'uses' => 'ImageController@create']);
-Route::post('media', [ 'as' => 'image.store', 'uses' => 'ImageController@save']);
-Route::get('media/show', [ 'as' => 'image.resized', 'uses' => 'ImageController@show']);
-
 Route::resource('blog','BlogController');
 
 Route::get('show_all','BlogController@show_all');
 
 Route::resource('gallery','GalleryController');
 
+Route::get('gallery2','GalleryController@index');
+
 Route::get('show_all_gallery','GalleryController@show_all_gallery');
 
 Route::get('contact','ContactController@getForm');
 Route::post('contact','ContactController@postForm');
+
+Route::get('commentaire','CommentaireController@getForm');
+Route::post('commentaire','CommentaireController@postForm');

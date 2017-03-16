@@ -3,9 +3,6 @@
 @section('contenu')
 <br/>
 <div class="col-sm-offset-4 col-sm-4">
-    @if(session()->has('ok'))
-		<div class="alert alert-success alert-dismissible">{!! session('ok') !!}</div>
-	@endif
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">Liste des galleries</h3>

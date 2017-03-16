@@ -417,3 +417,19 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #222222;
 }
+
+
+a.link_infowindows:hover, a.link_infowindows:focus {
+	text-decoration:none;
+}
+
+.title_infowindows{
+	text-decoration:none;
+	font-size: 16px;
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+	color: #aaa;
+	width:260px;
+	padding-top:10px;
+	padding-bottom:10px;
+	
+}

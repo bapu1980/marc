@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'development'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://moto.freesbee.ch'),
 
     /*
     |--------------------------------------------------------------------------
@@ -156,7 +156,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 		Collective\Html\HtmlServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+		Arcanedev\NoCaptcha\NoCaptchaServiceProvider::class,
     ],
 
     /*
@@ -204,8 +205,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 		'Form' => Collective\Html\FormFacade::class,
 		'Html' => Collective\Html\HtmlFacade::class,
-        'Image'=> Intervention\Image\Facades\Image::class
-
+        'Image'=> Intervention\Image\Facades\Image::class,
+		'Input' => Illuminate\Support\Facades\Input::class,
+		'Captcha' => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
     ],
 
 ];

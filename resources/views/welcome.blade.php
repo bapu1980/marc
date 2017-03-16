@@ -256,6 +256,9 @@
 		foreach ($blogs as $blog){
 			$array_google_map[$indice]['lat'] = $blog->latitude;
 			$array_google_map[$indice]['lng'] = $blog->longitude;
+			$array_google_map[$indice]['img'] = $blog->picture;
+			$array_google_map[$indice]['title'] = $blog->titre;
+			$array_google_map[$indice]['id'] = $blog->id;
 			$indice++;
 		}
 		
@@ -266,8 +269,10 @@
 		$(document).ready(function ($) {
 			
 			function initMap() {
+			  var url = "<?php print url("/"); ?>";
+			  
 			  var array_google_map= <?php echo json_encode($array_google_map ); ?>;
-
+			  			  
 			  var directionsDisplay = new google.maps.DirectionsRenderer({
                     map: map,
                     suppressMarkers: true
@@ -283,13 +288,16 @@
 				scrollwheel: false,
 			};
 			
+			var data = '';
 			var originTown = [];
 			var destinationTown = [];
+							
 			var map = new google.maps.Map(document.getElementById("map"),mapOptions);	
 			  directionsDisplay.setMap(map);
 			  
-			  var image_icon = "http://moto.freesbee.ch/public/images_site/icon_moto.png";
-			  function createMarker(lat, lng,image_icon) {
+			  var image_icon = url+"/public/images_site/icon_moto.png";
+			  function createMarker(lat,lng,image_icon,data) {
+					console.log(data);
 					var newmarker = new google.maps.Marker({
 						position: new google.maps.LatLng(lat, lng),
 						map:map,
@@ -299,14 +307,23 @@
 						},
 					});
 						
-						
+					newmarker["infowindow"] = new google.maps.InfoWindow({
+						content: data
+					});	
 					//marker.push(newmarker);
+					
+					google.maps.event.addListener(newmarker,"click", function() {
+													
+						this["infowindow"].open(map, this);
+					});
 				}
+				
+			  data = "<a class='link_infowindows' href="+url+"/blog/"+array_google_map[0]["id"]+"><div class='img_infowindows'><img width='260px' src='"+url+"/public/images/"+array_google_map[0]["img"]+"'></div><div class='title_infowindows'>"+array_google_map[0]["title"]+"</div></a>";
 			  
 			  originTown["lat"] = parseFloat(array_google_map[0]["lat"]);
 			  originTown["lng"] = parseFloat(array_google_map[0]["lng"]);
 			  
-			  createMarker(originTown["lat"],originTown["lng"],image_icon);
+			  createMarker(originTown["lat"],originTown["lng"],image_icon,data);
 			  
 			  destinationTown["lat"] = parseFloat(array_google_map[1]["lat"]);
 			  destinationTown["lng"] = parseFloat(array_google_map[1]["lng"]);
@@ -329,8 +346,10 @@
 				
 				calculateAndDisplayRoute(this[typeService+i], this[typeDisplay+i],originTown,destinationTown);
 				
-				createMarker(originTown["lat"],originTown["lng"],image_icon);
-				createMarker(destinationTown["lat"],destinationTown["lng"],image_icon);
+				data = "<a class='link_infowindows' href="+url+"/blog/"+array_google_map[i-1]["id"]+"><div class='img_infowindows'><img width='260px' src='"+url+"/public/images/"+array_google_map[i-1]["img"]+"'></div><div class='title_infowindows'>"+array_google_map[i-1]["title"]+"</div></a>";
+				createMarker(originTown["lat"],originTown["lng"],image_icon,data);
+				data = "<a class='link_infowindows' href="+url+"/blog/"+array_google_map[i]["id"]+"><div class='img_infowindows'><img width='260px' src='"+url+"/public/images/"+array_google_map[i]["img"]+"'></div><div class='title_infowindows'>"+array_google_map[i]["title"]+"</div></a>";
+				createMarker(destinationTown["lat"],destinationTown["lng"],image_icon,data);
 			  }
 			  
 			  

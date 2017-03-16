@@ -79,7 +79,8 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog=$this->blogRepository->getById($id);
-		return view('blog_show',compact('blog'));
+		$commentaire = DB::table('commentaires')->where('blog_id',$id)->get();
+		return view('blog_show',compact('blog','commentaire'));
     }
 	
 	public function show_all()
@@ -108,7 +109,7 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BlogRequest $request, $id)
     {
 		if ($request->hasFile('image')) {
 			$image = $request->file('image');
