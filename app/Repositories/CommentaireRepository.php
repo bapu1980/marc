@@ -30,4 +30,12 @@ class CommentaireRepository
 		return $this->commentaire->findOrFail($id);
 	}
 	
+	public function view_all(){
+		$commentaire = \App\Commentaire::all();
+		
+		return $commentaire;
+		
+		
+	}
+	
 }

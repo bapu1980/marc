@@ -79,13 +79,13 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog=$this->blogRepository->getById($id);
-		$commentaire = DB::table('commentaires')->where('blog_id',$id)->get();
+		$commentaire = DB::table('commentaires')->where('blog_id',$id)->orderBy('created_at','DESC')->get();
 		return view('blog_show',compact('blog','commentaire'));
     }
 	
 	public function show_all()
     {
-       $blogs = DB::table('blogs')->get();
+       $blogs = DB::table('blogs')->orderBy('created_at','DESC')->get();
 		
 	   return view('blog_show_all', ['blogs' => $blogs]);
     }
@@ -115,20 +115,21 @@ class BlogController extends Controller
 			$image = $request->file('image');
 			$image_show_all = $request->file('image');
 			$image_show = $request->file('image');
-		
-			$destinationPath = public_path('images');
-			$image->move($destinationPath,$image->getClientOriginalName()); // uploading file to given path
+			if($image->isValid()){
+				$destinationPath = public_path('images');
+				$image->move($destinationPath,$image->getClientOriginalName()); // uploading file to given path
+				
+				$path = public_path('images/'. $image->getClientOriginalName());
+				Image::make($destinationPath.'/'.$image->getClientOriginalName())->resize(650,350)->save($path);
+				
+				$path = public_path('images_show_all/'. $image_show_all->getClientOriginalName());		
+				Image::make($destinationPath.'/'.$image_show_all->getClientOriginalName())->resize(850,450)->save($path);
 			
-			$path = public_path('images/'. $image->getClientOriginalName());
-			Image::make($destinationPath.'/'.$image->getClientOriginalName())->resize(650,350)->save($path);
+				$path = public_path('images_show/'. $image_show->getClientOriginalName());
+				Image::make($destinationPath.'/'.$image_show->getClientOriginalName())->resize(1200,600)->save($path);
 			
-			$path = public_path('images_show_all/'. $image_show_all->getClientOriginalName());		
-			Image::make($destinationPath.'/'.$image_show_all->getClientOriginalName())->resize(850,450)->save($path);
-		
-			$path = public_path('images_show/'. $image_show->getClientOriginalName());
-			Image::make($destinationPath.'/'.$image_show->getClientOriginalName())->resize(1200,600)->save($path);
-		
-			$image_update_name = $image->getClientOriginalName();
+				$image_update_name = $image->getClientOriginalName();
+			}
 		}else{
 			$blog=$this->blogRepository->getById($id);
 			$image_update_name = $blog->picture;

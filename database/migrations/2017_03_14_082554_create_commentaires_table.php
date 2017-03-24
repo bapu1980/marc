@@ -17,10 +17,12 @@ class CreateCommentairesTable extends Migration
             $table->string('nom');
 			$table->string('email');
             $table->longText('commentaire_text');
-			$table->integer('blog_id')->unsigned;
+			$table->integer('blog_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
+			
         });
+		
     }
 
     /**
@@ -30,6 +32,9 @@ class CreateCommentairesTable extends Migration
      */
     public function down()
     {
+		Schema::table('commentaires', function (Blueprint $table) {
+			$table->dropForeign('commentaires_blog_id_foreign');
+		});
         Schema::drop('commentaires');
     }
 }

@@ -26,8 +26,8 @@ class BlogRequest extends Request
         return [
             'titre'=>'required|min:5|max:255',
 			'image'=>'required|image',
-			'ville'=>'required|min:5|max:255',
-			'pays'=>'required|min:5|max:255',
+			'ville'=>'required|max:255',
+			'pays'=>'required|max:255',
 			'latitude'=>'required|numeric',
 			'longitude'=>'required|numeric',
 			'blog_text'=>'required',

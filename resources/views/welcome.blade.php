@@ -73,13 +73,12 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1 id="homeHeading"><br/><br/><br/><br/><br/><br/>On voyage pour changer,<br/> non de lieu, mais d'idées.</h1>
+                <h1 id="homeHeading"><br/><br/><br/><br/><br/><br/><?php print $datas[0]->valeur; ?></h1>
                 
         
             </div>
         </div>
     </header>
-
     <section class="bg-primary" id="about">
         <div class="container">
             <div class="row">
@@ -92,17 +91,30 @@
             </div>
         </div>
     </section>
+<?php
+$date_depart = 1490028401;
+$date_actuel = time();
+$nbre_jour = $date_actuel - $date_depart;
+$nbre_jour = intval($nbre_jour / (24*60*60));
+$nbre_pays_visites = intval($datas[1]->valeur);
+$nbre_km = intval($datas[2]->valeur);
+?>
+<script>
+	var nbre_jour = "<?php print $nbre_jour; ?>";
+	var nbre_pays_visites = "<?php print $nbre_pays_visites; ?>";
+	var nbre_km = "<?php print $nbre_km; ?>";
 
+</script>
     <section id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="odometer">0</div>
-					<div class="odometer_text">pays visités</div>
+					<div class="odometer_text">jours sur la route</div>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="odometer_2">0</div>
-					<div class="odometer_text">frontières traversées</div>
+					<div class="odometer_text">pays visités</div>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="odometer_3">0</div>
@@ -318,6 +330,7 @@
 					});
 				}
 				
+			 if(array_google_map[0] != undefined){
 			  data = "<a class='link_infowindows' href="+url+"/blog/"+array_google_map[0]["id"]+"><div class='img_infowindows'><img width='260px' src='"+url+"/public/images/"+array_google_map[0]["img"]+"'></div><div class='title_infowindows'>"+array_google_map[0]["title"]+"</div></a>";
 			  
 			  originTown["lat"] = parseFloat(array_google_map[0]["lat"]);
@@ -325,10 +338,18 @@
 			  
 			  createMarker(originTown["lat"],originTown["lng"],image_icon,data);
 			  
-			  destinationTown["lat"] = parseFloat(array_google_map[1]["lat"]);
-			  destinationTown["lng"] = parseFloat(array_google_map[1]["lng"]);
-			  calculateAndDisplayRoute(directionsService, directionsDisplay,originTown,destinationTown);
-			  
+			 }
+			 
+			 if(array_google_map[1] != undefined){
+				  destinationTown["lat"] = parseFloat(array_google_map[1]["lat"]);
+				  destinationTown["lng"] = parseFloat(array_google_map[1]["lng"]);
+				  calculateAndDisplayRoute(directionsService, directionsDisplay,originTown,destinationTown);
+				  
+				  data = "<a class='link_infowindows' href="+url+"/blog/"+array_google_map[1]["id"]+"><div class='img_infowindows'><img width='260px' src='"+url+"/public/images/"+array_google_map[1]["img"]+"'></div><div class='title_infowindows'>"+array_google_map[1]["title"]+"</div></a>";
+				  
+				  createMarker(destinationTown["lat"],destinationTown["lng"],image_icon,data);
+			 }
+			 
 			  var typeDisplay = 'directionsDisplay';
 			  var typeService = 'directionsService';
 

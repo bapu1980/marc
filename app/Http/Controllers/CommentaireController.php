@@ -22,7 +22,13 @@ class CommentaireController extends Controller
 	
 	public function postForm(CommentaireRequest $request){
 		$commentaire=$this->commentaireRepository->store($request->all());
-		return 'Le titre est ' . $request->input('nom'); 
+		return view('confirm_commentaire');
+	}
+	
+	public function view_all(){
+		$commentaires = $this->commentaireRepository->view_all();
+			   
+		return view('commentaire_all',compact('commentaires'));
 	}
 }
 

@@ -5,7 +5,7 @@
 	<div class="panel panel-info">
 		<div class="panel-heading">Contactez-moi</div>
 		<div class="panel-body">
-							{!! Form::open(['url'=>'commentaire','method'=>'POST']) !!}
+							{!! Form::open(['url'=>'commentaire_insert','method'=>'POST']) !!}
 					<div class="form-group {!! $errors->has('nom') ? 'has-error' : '' !!}">
 						{!! Form::text('nom', null, ['class'=>'form-control','placeholder'=>'Votre nom']) !!}
 						{!! $errors->first('nom','<small class="help-block">:message</small>') !!}

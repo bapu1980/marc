@@ -22,9 +22,9 @@ od_2 = new Odometer({
 $(document).ready(function(){
 		$(window).scroll(function(){
 			if(($(this).scrollTop() > 400)&&($(this).scrollTop() < 600)){
-			$('.odometer').html(14);
-		od.update(18);
-		od_2.update(14567.786);
+			$('.odometer').html(nbre_jour);
+		od.update(nbre_pays_visites);
+		od_2.update(nbre_km);
 			}
 		});
 	});
